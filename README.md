@@ -1,4 +1,4 @@
-# Chop Chop! An Analysis on Recipe Preparation Times and Ratings
+# A Follow-up Analysis on Recipe Ratings using SciKitLearn
 Authors: Xiaoyan Zhang (xiz115@ucsd.edu), Kay Qu(kqu@ucsd.edu)
 
 # About this project
