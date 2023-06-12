@@ -10,7 +10,7 @@ More information about the project's guidelines can be found [here](https://dsc8
 
 ## Research Question
 
-We would like to investigate **the relationship between Time (in minutues) to prepare a recipe and whether it correlates with the average rating that the recipe receives.** We hypothesize that the longer time a recipe requires, the less rating it will receive. We will be implementing hypothesis testing techniques to investigate this question. 
+Follwoing up on our previous investigation on **the relationship between Time (in minutues) to prepare a recipe and whether it correlates with the average rating that the recipe receives.** We hypothesize that the longer time a recipe requires, the less rating it will receive. However, we could not establish a clear correlation between 
 
 This is a question worth investigating because through analyzing the relationship between cooking time and ratings, we can potentially look into whether this trend (or the lack thereof) is related to years when the users provided their ratings. We can then preform meta-analysis on whether users are becoming less fond of lengthy recipes as time passes. This can be a future research topic that is worth investigating. 
 
