@@ -4,15 +4,16 @@ Authors: Xiaoyan Zhang (xiz115@ucsd.edu), Kay Qu(kqu@ucsd.edu)
 # About this project
 This is a paired EDA project which is originally assigned by UCSD's DSC80 offering during SP23. 
 we will be focusing on cleaning, exploreing, and building a scikit pipeline to tranform and predict data originally scraped from [food.com](food.com). 
-More information about the project's guidelines can be found [here]((https://dsc80.com/project5/#overview)).
+More information about the project's guidelines can be found [here](https://dsc80.com/project5/#overview).
 
-# Part I: Introduction
+# Part I: Analysis
 
-## Research Question
+## Prediction Problem
 
-Follwoing up on our previous investigation on **the relationship between Time (in minutues) to prepare a recipe and whether it correlates with the average rating that the recipe receives.** We hypothesize that the longer time a recipe requires, the less rating it will receive. However, we could not establish a clear correlation between 
+Follwoing up on our previous investigation on **the relationship between Time (in minutues) to prepare a recipe and whether it correlates with the average rating that the recipe receives.** We hypothesize that the longer time a recipe requires, the less rating it will receive. However, we could not establish a clear correlation between them, therefore we would like to build a **multiclass classification model** to predict recipes' ratings.
 
-This is a question worth investigating because through analyzing the relationship between cooking time and ratings, we can potentially look into whether this trend (or the lack thereof) is related to years when the users provided their ratings. We can then preform meta-analysis on whether users are becoming less fond of lengthy recipes as time passes. This can be a future research topic that is worth investigating. 
+The metric we will be using to assess our model is (TBD)
+
 
 ## About our data
 Our data is derived from [food.com](https://www.food.com), originally scraped and used by them. The raw csv files can be found [here](https://drive.google.com/file/d/1kIbMz6jlhleiZ9_3QthmUnifoSds_2EI/view).
@@ -43,3 +44,5 @@ Below are the breif description of the raw data that we are going to perform cle
 | 'date'       | Date when the rating was posted   |
 | 'rating'     | rating, scaling from 1-5          |
 | 'review'     | user's review message about the recipe           |
+
+We
