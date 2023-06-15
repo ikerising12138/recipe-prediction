@@ -47,6 +47,8 @@ Below are the breif description of the raw data that we are going to perform cle
 
 We transformed `submitted` column to `submitted_year`, `date` column to `interacted_date`, as per the data source. Then, we exapnded the nutrition column by assigning each nutrition to its separate columns:
 
+### transformed dataframe
+
 | submitted_year | interacted_year | minutes | n_steps | n_ingredients | calories (#) | total fat (PDV) | sugar (PDV) | sodium (PDV) | protein (PDV) | saturated fat (PDV) | carbohydrates (PDV) | rating |
 | -------------- | --------------- | ------- | ------- | ------------- | ------------ | --------------- | ----------- | ------------- | -------------- | ------------------- | -------------------- | ------ |
 | 2008           | 2008            | 40      | 10      | 9             | 138.4        | 10.0            | 50.0        | 3.0           | 3.0            | 19.0                | 6.0                  | 4.0    |
