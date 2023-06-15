@@ -10,9 +10,9 @@ More information about the project's guidelines can be found [here](https://dsc8
 
 ## Prediction Problem
 
-Follwoing up on our previous investigation on **the relationship between Time (in minutues) to prepare a recipe and whether it correlates with the average rating that the recipe receives.** We hypothesize that the longer time a recipe requires, the less rating it will receive. However, we could not establish a clear correlation between them, therefore we would like to build a **multiclass classification model** to predict recipes' ratings.
+Our previous investigation question was on the relationship between Time (in minutues) to prepare a recipe and whether it correlates with the average rating that the recipe receives. We hypothesize that the longer time a recipe requires, the less rating it will receive. However, we could not establish a clear correlation between them. Therefore we would now like to build a **multiclass classification model** to predict recipes' ratings. We will be using `DecisionTreeClassifier` module which is built into `sklearn` to help us classify recipe ratings, categorized as discrete categorical data of 1-5.
 
-The metric we will be using to assess our model is (TBD)
+The metric we will be using to assess our model is accuracy, since mean acccuracy function is built-in to the `DecisionTreeClassifier` model and for the purpose of this question, we are only interested in how accurately it can make predictions, and there are no specific restrictions against any specific errors, such as false negatives.
 
 
 ## About our data
@@ -55,4 +55,4 @@ We transformed `submitted` column to `submitted_year`, `date` column to `interac
 | 2008           | 2009            | 40      | 6       | 9             | 194.8        | 20.0            | 6.0         | 32.0          | 22.0           | 36.0                | 3.0                  | 5.0    |
 | 2008           | 2013            | 40      | 6       | 9             | 194.8        | 20.0            | 6.0         | 32.0          | 22.0           | 36.0                | 3.0                  | 5.0    |
 
-This table represents the DataFrame with each column separated by vertical bars (|) and the header row separated by dashes (-).
+
