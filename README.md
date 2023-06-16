@@ -2,7 +2,7 @@
 Authors: Xiaoyan Zhang (xiz115@ucsd.edu), Kay Qu(kqu@ucsd.edu)
 
 # About this project
-This is a paired EDA project which is originally assigned by UCSD's DSC80 offering during SP23. 
+This is a paired data exploration project which is originally assigned by UCSD's DSC80 offering during SP23. 
 we will be focusing on cleaning, exploreing, and building a scikit pipeline to tranform and predict data originally scraped from [food.com](food.com). 
 More information about the project's guidelines can be found [here](https://dsc80.com/project5/#overview).
 
@@ -64,12 +64,17 @@ At time of prediction, we are able to use all of our data from our transformed d
 
 ## Baseline Model
 
-Again, since we are dealing with a classification problem, we will mainly be using `DecisionTreeClassifier`. he features we will be using is `submitted_year` and `interacted_year`, and both of them are treated as dicrete categorical features and therefore we decided to use `OneHotEncoder` to vectoeize these two columns. The remainder columns are kept and passed down to our `DecisionTreeClassifier`.
+Before we train our model, we need to first define a training set and a testing set. 
 
-
+Again, since we are dealing with a classification problem, we will mainly be using `DecisionTreeClassifier`. The features we will be using is `submitted_year` and `interacted_year`, and both of them are treated as dicrete categorical features and therefore we decided to use `OneHotEncoder` to vectoeize these two columns. The remainder columns are kept and passed down to our `DecisionTreeClassifier`.
 
 This process is achieved via `Pipeline` module, in which it allows us to first apply necessary preprocessings to our dataframe and then apply the classifer to our target data. 
 
-### Performace
+### Performace and Interpretation
 
-The result of our `DecisionTreeClassifier` 
+The result of our `DecisionTreeClassifier` showed a mean accuracy on training data of 0.9039, and a mean accuracy on testing data of 0.5889. This is not an ideal result, since a high training-accuracy and a low testing-accuracy indicate that our model is overfitting the training data. We need to make necessary adjustments to account for overfitting. 
+
+
+## Final Model
+
+For the final model, we've decided to engineer more features to our model. Namely, 
