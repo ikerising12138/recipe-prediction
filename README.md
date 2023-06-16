@@ -155,7 +155,7 @@ Despite the improvement, we should also be aware of the fact that our model was 
 
 # Fairness Analysis
 
-In this section, we would like to perform a fairness analysis by binarizing our input data into two groups: 
+In this section, we would like to perform a permutation test for fairness analysis by binarizing our input data into two groups: 
 
 Group X: recipes with steps smaller than 15
 
