@@ -75,12 +75,12 @@ We will be using `DecisionTreeClassifier` module which is built into `sklearn` t
 
 The metric we will be using to assess our model is accuracy, since mean acccuracy function is built-in to the `DecisionTreeClassifier` model and for the purpose of this question, we are only interested in how accurately it can make predictions, and there are no specific restrictions against any specific errors, such as false negatives.
 
-At time of prediction, we are able to use all of our data from our transformed dataframe to perform analysis, since the data's dates span from 2008 to 2018.
+At time of prediction, we are able to use all of our data aside from the `rating` column from our transformed dataframe to perform analysis, since `rating` is our response variable.
 
 
 ## Baseline Model
 
-Before we train our model, we need to first define a training set and a testing set. 
+Before we train our model, we need to first define a training set and a testing set. We used 
 
 Again, since we are dealing with a classification problem, we will mainly be using `DecisionTreeClassifier`. The features we will be using is `submitted_year` and `interacted_year`, and both of them are treated as dicrete categorical features and therefore we decided to use `OneHotEncoder` to vectoeize these two columns. The remainder columns are kept and passed down to our `DecisionTreeClassifier`.
 
@@ -93,12 +93,17 @@ The result of our `DecisionTreeClassifier` showed a mean accuracy on training da
 
 ## Final Model
 
-For the final model, we've decided to engineer more features to our model. Namely, `n_steps`, `n_ingredients`, and `minutes`. We have visualized their distributionn with regard to the ratings t
+For the final model, we've decided to engineer more features and added them into our model. Namely, we chose `n_steps`, `n_ingredients`, and `minutes`. We have visualized their distributionn with regard to the ratings:
 
 <iframe src="assets/Scatter_Plot_N_Steps.html" width=600 height=550 frameBorder=0></iframe>
 
 <iframe src="assets/Scatter_Plot_N_Ingre.html" width=600 height=550 frameBorder=0></iframe>
 
 <iframe src="assets/Scatter_Plot_Minutes.html" width=600 height=550 frameBorder=0></iframe>
+
+From the plots above, we can see that there seems to be some association between `n_steps`, `n_ingredients`, `minutes` and ratings, all showing some bimodal trends. 
+
+We believe these features helped our model to make better predictions partially due to their bimodal relationships with the ratings, and also because we believe that these features are associated with a high-level concept of 'tediousness' of a recipe, as we hypothesized that either recipes that are easy to make, or have a delicate preparation process will gain higher ratings. 
+
 
 
