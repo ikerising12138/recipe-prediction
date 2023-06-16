@@ -146,7 +146,7 @@ After we input a variety of hyperparameters as inputs and fitted training data, 
 
 Then we used the best hyperparameters and trained the final model on the whole dataset because part of the training data was used as validation data in the process of GridSearchCV. Now we calclulated our final model's accuracy performance again.
 
-The result of our final `DecisionTreeClassifier` model produced a mean accuracy on training data of 0.7247, and a mean accuracy on testing data of 0.7209. Comparing the current accuracy on test data with 0.5832 from the baseline model, we saw a significant increase in accuracy when our model was tested on unseen data. We can visualize our result with a confusion matrix below:
+The result of our final `DecisionTreeClassifier` model produced a mean accuracy on training data of 0.7247, and a mean accuracy on testing data of 0.7209. Comparing the current accuracy on test data with 0.5832 from the baseline model, we saw a significant increase in accuracy when our model was tested on unseen data. We can visualize our result with a confusion matrix below in which the row labels represent the true ratings while the column labels represent the predicted ratings:
 
 |     | 0   | 1   | 2   | 3   | 4   | 5   |
 | --- | --- | --- | --- | --- | --- | --- |
