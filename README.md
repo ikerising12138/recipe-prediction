@@ -73,7 +73,7 @@ We transformed `submitted` column to `submitted_year`, `date` column to `interac
 
 We will be using `DecisionTreeClassifier` module which is built into `sklearn` to help us classify recipe ratings, categorized as discrete categorical data of 1-5. We use ratings as our response variable mainly because we want to be able to detect classification patterns from the other data entries
 
-The metric we will be using to assess our model is accuracy, since mean acccuracy function is built-in to the `DecisionTreeClassifier` model and for the purpose of this question, we are only interested in how accurately it can make predictions, and there are no specific restrictions against any specific errors, such as false negatives.
+The metric we will be using to assess our model is **accuracy**, since mean acccuracy function is built-in to the `DecisionTreeClassifier` model and for the purpose of this question, we are only interested in how accurately it can make predictions, and there are no specific restrictions against any specific errors, such as false negatives.
 
 At time of prediction, we are able to use all of our data aside from the `rating` column from our transformed dataframe to perform analysis, since `rating` is our response variable.
 
@@ -93,7 +93,7 @@ The result of our `DecisionTreeClassifier` showed a mean accuracy on training da
 
 ## Final Model
 
-### Selecting More Feature
+### Selecting More Features
 
 For the final model, we've decided to select more features and added them into our model. Namely, we chose `n_steps`, `n_ingredients`, and `minutes`. We have visualized their distributionn with regard to the ratings:
 
@@ -140,7 +140,7 @@ Our group used `DecisionTreeClassifier` model for prediction. Its documentation 
 We chose a decision tree model over a linear regression model mainly because we were unable to produce a significant prediction model by only using linear regression. Of all the different decision tree models, we picked `DecisionTreeClassifier` as our model because it is fairly simple to use, is able to take in preprocessed data we provide, and works well with `GridSearchCV` when looking for optimal hyperparameters (more on `GridSearchCV` below).
 
 
-In order to prevent overfitting and look for best parameters suitable for our `DecisionTreeClassifier` object, we will be using `GridSearchCV` to perform a k-cross-fold validation procedure. For simplicity, we chose a k value of 5.
+In order to prevent overfitting and look for best parameters suitable for our `DecisionTreeClassifier` object, we will be using `GridSearchCV` to perform a k-fold cross validation procedure. For simplicity, we chose a k value of 5.
 
 After choosing from a variety of hyperparameters as inputs, GridSearchCV produced the following as the best parameters:
 
