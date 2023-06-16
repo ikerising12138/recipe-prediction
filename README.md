@@ -44,7 +44,9 @@ Below are the brief description of the raw data that we are going to perform cle
 
 ### Data Cleaning Process
 We've first dropped rows with missing `rating` values. Since we are trying to classify `rating` based on other columns, information in rows with missing `rating` would be of little value for us in the classification process.
+
 We've also splitted the `nutrition` column into 7 separate columns as each value in the `nutrition` column represents a nutrient in the recipe: `calories (#)`, `total fat (PDV)`, `sugar (PDV)`, `sodium (PDV)`, `protein (PDV)`, `saturated fat (PDV)`, and `carbohydrates (PDV)`.
+
 Then, we wanted to extract the year information from the `submitted` column in `raw_recipes` dataset and the year information from the `date` column in `raw_interactions` dataset. We transformed the `submitted` column to `submitted_year` which represents the year when a recipe was posted, and the `date` column to `interacted_date` which represents the year when a rating for a recipe was posted.
 We finally ended up selecting the following 13 columns that will be needed in this project.
 
@@ -76,15 +78,15 @@ At time of prediction, we are able to use all of our data aside from the `rating
 
 # Baseline Model
 
-Before we train our model, we need to first define a training set and a testing set. We used 
+Before we train our model, we need to first define a training set and a testing set. We used `train_test_split` to randomly split our cleaned dataset into seen data (`X_train` and `y_train`) and unseen data (`X_test` and `y_test`) with a `test_size` of 0.25. In later practices of GridSearchCV, part of the seen data will be used as validation data. Though, after we've obtained our training and test dataset, they will remain the same throughout the project so that we can fairly compare the performance of our baseline and final model with no disturbance from different seen and unseen data.
 
-Again, since we are dealing with a classification problem, we will mainly be using `DecisionTreeClassifier`. The features we will be using is `submitted_year` and `interacted_year`, and both of them are treated as dicrete categorical features and therefore we decided to use `OneHotEncoder` to vectoeize these two columns. The remainder columns are kept and passed down to our `DecisionTreeClassifier`.
+Again, since we are dealing with a classification problem, we will mainly be using `DecisionTreeClassifier`. The two features we've engineered in this base line model are `submitted_year` and `interacted_year`. Both of them are treated as dicrete categorical features, and therefore we decided to use `OneHotEncoder` to transform these two columns. The remainder columns are numerical features, so we leave them as-is for now and passthrough them to our `DecisionTreeClassifier`.
 
-This process is achieved via `Pipeline` module, in which it allows us to first apply necessary preprocessings to our dataframe and then apply the classifer to our target data. 
+This process is achieved via `Pipeline` module, in which it allows us to first apply necessary preprocessings to our dataframe and then apply the classifer to our target data.
 
 ### Performace and Interpretation
 
-The result of our `DecisionTreeClassifier` showed a mean accuracy on training data of 0.9039, and a mean accuracy on testing data of 0.5889. This is not an ideal result, since a high training-accuracy and a low testing-accuracy indicate that our model is overfitting the training data. We need to make necessary adjustments to account for overfitting. 
+The result of our `DecisionTreeClassifier` showed an accuracy score on training data of about 0.9046, and an accuracy score on test data of 0.5832. This is not an ideal result, since a much higher training-accuracy and a low testing-accuracy score indicate that our model is overfitting the training data. Thus, we need to make necessary adjustments to resolve the serious overfitting issue in our final model.
 
 
 # Final Model
