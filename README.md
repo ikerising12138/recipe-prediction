@@ -149,11 +149,10 @@ Then we used the best hyperparameters and trained the final model on the whole d
 The result of our final `DecisionTreeClassifier` model produced a mean accuracy on training data of 0.7247, and a mean accuracy on testing data of 0.7209. Comparing the current accuracy on test data with 0.5832 from the baseline model, we saw a significant increase in accuracy when our model was tested on unseen data. We can visualize our result with a confusion matrix below:
 
 <iframe src="assets/confusion_matrix.html" width=500 height=450 frameBorder=0></iframe>
-<iframe src="assets/confusion_matrix.png" width=550 height=450 frameBorder=0></iframe>
 
 |   0 |   1 |   2 |   3 |   4 |    5 |\n|----:|----:|----:|----:|----:|-----:|\n|  12 |   0 |   0 |   0 |   0 | 3869 |\n|   3 |   0 |   0 |   0 |   0 |  695 |\n|   1 |   0 |   0 |   0 |   0 |  597 |\n|   3 |   0 |   0 |   0 |   0 | 1729 |\n|   5 |   0 |   0 |   0 |   0 | 9431 |
 
-Despite the improvement, we should also be aware of the fact that our model was only classifying `rating` of either 0 or 5. This is because in the original dataset, 72.4% of all ratings are 5, 15.9% of all ratings are 4 (so high ratings consist of over 88% of all rating scores) and 6.41% of all ratings are 0. So just guessing 0 or higher rating like 5 was not due to defects of our model but instead due to the serious class imbalance issue of the original dataset. A more in-depth analysis in future studies may be required to resolve this issue.
+Despite the improvement, we should also be aware of the fact that our model was only classifying `rating` of either 0 or 5. This is because in the original dataset, 72.4% of all ratings are 5 , 15.9% of all ratings are 4 (so high ratings consist of over 88% of all rating scores) and 6.41% of all ratings are 0. So just guessing 0 or higher rating like 5 was not due to defects of our model but instead due to the serious class imbalance issue of the original dataset. A more in-depth analysis in future studies may be required to resolve this issue.
 
 # Fairness Analysis
 
