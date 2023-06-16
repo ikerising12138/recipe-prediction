@@ -151,7 +151,7 @@ The result of our new `DecisionTreeClassifier` produced a mean accuracy on train
 
 <iframe src="assets/confusion_matrix.html" width=600 height=550 frameBorder=0></iframe>
 
-Despite the improvement, we should also consider the fact that our model was only producing results of either 0 or 5. This is because the original dataset contained mostly fives, and just guessing 0 or 5 was considered to be the most optimal. A more in-depth analysis is required to resolve this issue.
+Despite the improvement, we should also be aware of the fact that our model was only producing results of either 0 or 5. This is because the original dataset contained mostly fives, and just guessing 0 or 5 was considered to be the most optimal. A more in-depth analysis is required to resolve this issue.
 
 ## Fairness Analysis
            
