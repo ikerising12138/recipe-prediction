@@ -79,4 +79,4 @@ The result of our `DecisionTreeClassifier` showed a mean accuracy on training da
 
 For the final model, we've decided to engineer more features to our model. Namely, 
 
-<iframe src="assets/Part_3.html" width=600 height=550 frameBorder=0></iframe>
+<iframe src="Scatter_Plot_N_Steps.html" width=600 height=550 frameBorder=0></iframe>
