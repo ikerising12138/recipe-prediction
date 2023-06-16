@@ -80,3 +80,9 @@ The result of our `DecisionTreeClassifier` showed a mean accuracy on training da
 For the final model, we've decided to engineer more features to our model. Namely, `n_steps`, `n_ingredients`, and `minutes`.
 
 <iframe src="assets/Scatter_Plot_N_Steps.html" width=600 height=550 frameBorder=0></iframe>
+<div markdown="1" style="
+    display: block; 
+    /* background-color: blue;  */
+    width: 100%; 
+    overflow-x:auto
+">
