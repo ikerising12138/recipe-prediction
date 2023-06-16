@@ -151,6 +151,7 @@ The result of our final `DecisionTreeClassifier` model produced a mean accuracy 
 <iframe src="assets/confusion_matrix.html" width=500 height=450 frameBorder=0></iframe>
 
 |     |   0 |   1 |   2 |   3 |   4 |    5 |
+| --- | --- | --- | --- | --- | --- | --- |
 |   1 |  12 |   0 |   0 |   0 |   0 | 3869 |
 |   2 |   3 |   0 |   0 |   0 |   0 |  695 |
 |   3 |   1 |   0 |   0 |   0 |   0 |  597 |
