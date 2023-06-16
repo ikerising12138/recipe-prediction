@@ -148,9 +148,7 @@ Then we used the best hyperparameters and trained the final model on the whole d
 
 The result of our final `DecisionTreeClassifier` model produced a mean accuracy on training data of 0.7247, and a mean accuracy on testing data of 0.7209. Comparing the current accuracy on test data with 0.5832 from the baseline model, we saw a significant increase in accuracy when our model was tested on unseen data. We can visualize our result with a confusion matrix below:
 
-<iframe src="assets/confusion_matrix.html" width=500 height=450 frameBorder=0></iframe>
-
-|     |   0 |   1 |   2 |   3 |   4 |    5 |
+|     | 0   | 1   | 2   | 3   | 4   | 5   |
 | --- | --- | --- | --- | --- | --- | --- |
 |   1 |  12 |   0 |   0 |   0 |   0 | 3869 |
 |   2 |   3 |   0 |   0 |   0 |   0 |  695 |
