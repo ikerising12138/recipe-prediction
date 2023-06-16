@@ -95,11 +95,11 @@ For the final model, we've decided to engineer more features to add upon our bas
 
 We have visualized their distributionn with regard to `rating`:
 
-<iframe src="assets/Scatter_Plot_N_Steps.html" width=500 height=450 frameBorder=0></iframe>
+<iframe src="assets/Scatter_Plot_N_Steps.html" width=550 height=450 frameBorder=0></iframe>
 
-<iframe src="assets/Scatter_Plot_N_Ingre.html" width=500 height=450 frameBorder=0></iframe>
+<iframe src="assets/Scatter_Plot_N_Ingre.html" width=550 height=450 frameBorder=0></iframe>
 
-<iframe src="assets/Scatter_Plot_Minutes.html" width=500 height=450 frameBorder=0></iframe>
+<iframe src="assets/Scatter_Plot_Minutes.html" width=550 height=450 frameBorder=0></iframe>
 
 From the plots above, we can see that there seems to be some association between `n_steps`, `n_ingredients`, `minutes` and `rating`, some with visually bimodal trends.
 
@@ -149,7 +149,7 @@ Then we use best hyperparameters and train the final model on the whole dataset 
 The result of our final `DecisionTreeClassifier` model produced a mean accuracy on training data of 0.7247, and a mean accuracy on testing data of 0.7209. Comparing the current accuracy on test data with 0.5832 from the baseline model, we saw a significant increase in accuracy when our model was tested on unseen data. We can visualize our result with a confusion matrix below:
 
 <iframe src="assets/confusion_matrix.html" width=500 height=450 frameBorder=0></iframe>
-<iframe src="assets/confusion_matrix.png" width=500 height=450 frameBorder=0></iframe>
+<iframe src="assets/confusion_matrix.png" width=550 height=450 frameBorder=0></iframe>
 
 Despite the improvement, we should also be aware of the fact that our model was only classifying `rating` of either 0 or 5. This is because in the original dataset, 72.4% of all ratings are 5, 15.9% of all ratings are 4 (so high ratings consist of over 88% of all rating scores) and 6.41% of all ratings are 0. So just guessing 0 or higher rating like 5 was not due to defects of our model but instead due to the serious class imbalance issue of the original dataset. A more in-depth analysis in future studies may be required to resolve this issue.
 
