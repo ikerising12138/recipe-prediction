@@ -93,7 +93,9 @@ The result of our `DecisionTreeClassifier` showed a mean accuracy on training da
 
 ## Final Model
 
-For the final model, we've decided to engineer more features and added them into our model. Namely, we chose `n_steps`, `n_ingredients`, and `minutes`. We have visualized their distributionn with regard to the ratings:
+### Selecting More Feature
+
+For the final model, we've decided to select more features and added them into our model. Namely, we chose `n_steps`, `n_ingredients`, and `minutes`. We have visualized their distributionn with regard to the ratings:
 
 <iframe src="assets/Scatter_Plot_N_Steps.html" width=600 height=550 frameBorder=0></iframe>
 
@@ -101,9 +103,28 @@ For the final model, we've decided to engineer more features and added them into
 
 <iframe src="assets/Scatter_Plot_Minutes.html" width=600 height=550 frameBorder=0></iframe>
 
-From the plots above, we can see that there seems to be some association between `n_steps`, `n_ingredients`, `minutes` and ratings, all showing some bimodal trends. 
+From the plots above, we can see that there seems to be some association between `n_steps`, `n_ingredients`, `minutes` and ratings, some with a visually bimodal trends. 
 
 We believe these features helped our model to make better predictions partially due to their bimodal relationships with the ratings, and also because we believe that these features are associated with a high-level concept of 'tediousness' of a recipe, as we hypothesized that either recipes that are easy to make, or have a delicate preparation process will gain higher ratings. 
+
+### Engineering features
+
+Now that we've decided on what features to use, we wanted to process these data so that they help with better prediction results.
+
+For  `n_steps` and  `n_ingredients`, we used `KBinsDiscretizer` to transform the numerical values into discrete bins. 
+
+For `minutes`, we've decided to apply `StandardScalar` to transform them to standardized units. This process enables us to better handle outliers, since for `minutes` column, the percentile distributuion is 
+25th percentile: 20.0
+50th percentile: 35.0
+75th percentile: 60.0
+100th percentile: 1051200.0
+, 
+thus we wanted to account for the outliers on the higher end of the spectrum. 
+
+
+### Choosing Appropriate Hyperparameters
+
+
 
 
 
