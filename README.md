@@ -93,7 +93,9 @@ The result of our `DecisionTreeClassifier` showed an accuracy score on training 
 
 ### Selecting More Features
 
-For the final model, we've decided to select more features and added them into our model. Namely, we chose `n_steps`, `n_ingredients`, and `minutes`. We have visualized their distributionn with regard to the ratings:
+For the final model, we've decided to engineer more features to add upon our baseline model. Namely, we chose `n_steps`, `n_ingredients`, and `minutes` to perform feature engineering.
+
+We have visualized their distributionn with regard to `rating`:
 
 <iframe src="assets/Scatter_Plot_N_Steps.html" width=600 height=550 frameBorder=0></iframe>
 
@@ -101,19 +103,17 @@ For the final model, we've decided to select more features and added them into o
 
 <iframe src="assets/Scatter_Plot_Minutes.html" width=600 height=550 frameBorder=0></iframe>
 
-From the plots above, we can see that there seems to be some association between `n_steps`, `n_ingredients`, `minutes` and ratings, some with a visually bimodal trends. 
+From the plots above, we can see that there seems to be some association between `n_steps`, `n_ingredients`, `minutes` and `rating`, some with visually bimodal trends.
 
-We believe these features helped our model to make better predictions partially due to their bimodal relationships with the ratings, and also because we believe that these features are associated with a high-level concept of 'tediousness' of a recipe, as we hypothesized that either recipes that are easy to make, or have a delicate preparation process will gain higher ratings. 
+We believe these features will help our model to make better classification decisions partially due to their bimodal relationships with the ratings, and also because we believe that these features are associated with a high-level concept of 'tediousness' of a recipe, as we hypothesized that either recipes that are easy to make or recipes with a delicate preparation process will gain higher ratings. 
 
 ### Engineering features
 
 Now that we've decided on what features to use, we wanted to process these data so that they help with better prediction results. 
 
+For `n_steps` and `n_ingredients`, the former ranges from 0 to about 100 steps, and the latter ranges from 0 to 40 ingredients. Because of their manageable range and absence of outliers, we decided to use `KBinsDiscretizer` to transform their numerical values into discrete bins of 10 and 5, respectively. This process allows us to better handle non-linear relationships (in case these features are not linearly related to rating) and reduce overfitting as the complexity of the original data is simplified.
 
-For  `n_steps` and  `n_ingredients`, we used `KBinsDiscretizer` to transform their numerical values into discrete bins. This process allows us to better handle non-linear relationships (in case these features are not linearly related to rating), and to reduce overfitting as the complexity of the original data is simplified. 
-
-
-For `minutes`, we've decided to apply `StandardScalar` to transform them to standardized units. This process enables us to better handle outliers, since for `minutes` column, the percentile distributuion is:
+Though, while looking at the distribution of `minutes`, we're surprised by its huge range of data as its percentile distribution is as follows:
 
 | Percentile       | Value      |
 | ---------------- | ---------- |
@@ -122,18 +122,18 @@ For `minutes`, we've decided to apply `StandardScalar` to transform them to stan
 | 75th percentile  | 60.0       |
 | 100th percentile | 1051200.0  |
 
+The huge gap between 75th percentile and the maximum level hints the existence of outliers in the `minutes` column. Thus, we carried out further explorations on the `minutes` column. Using `raw_recipes` dataset to find what recipes could take so long to finish and testify if they are outliers, we filtered for recipes that take between 2 to 3 weeks to finish, which include marinated cuisines like `kimchi` and `2 week sweet pickles`, `weekly made bread`, and liquor like `limoncello` and `plum liquor`. Among recipes that take more than 3 weeks and even months and years to finish, a huge proportion are homemade liquor and wine including `coffee flavored liqueur`, homemade kahlua`, `homemade fruit liquers`, `word stew`, etc.
 
-thus, we wanted to account for the outliers on the higher end of the spectrum. 
+Thus, our point is that we do need to account for these seemingly outliers on the higher end of the spectrum because it's likely that people are more inclined to give high rates for recipes that take them extremely lengthy time to finish. Considering the fact that using bins or quantiles can overly simply or generalize the trend, we decided to apply `StandardScalar` to transform the `minutes` column to standardized units so as to better capture individual differences between `minutes` data points.
+
 
 Now that we have our `submitted_year` and `interacted_year` through OneHotEncoder,
-`n_steps` and `n_ingredients` through KBinsDiscretizer, and
-`minutes` thorugh StandardScalar, 
-we can first apply these preprocessing stpes to our data, so we can then move on to our next step: finding optimal hyperparameters.
+`n_steps` and `n_ingredients` through KBinsDiscretizer, `minutes` thorugh StandardScalar, and the other columns passthroughed, we can first apply these preprocessing steps so we can then move on to our next step: finding the optimal combination of hyperparameters.
 
 
 ### Choosing Appropriate Model and Hyperparameters
 
-Our group used `DecisionTreeClassifier` model for prediction. Its documentation can be found [here](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html).
+Our project uses `DecisionTreeClassifier` model for prediction. Its documentation can be found [here](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html).
 
 We chose a decision tree model over a linear regression model mainly because we were unable to produce a significant prediction model by only using linear regression. Of all the different decision tree models, we picked `DecisionTreeClassifier` as our model because it is fairly simple to use, is able to take in preprocessed data we provide, and works well with `GridSearchCV` when looking for optimal hyperparameters (more on `GridSearchCV` below).
 
