@@ -122,7 +122,7 @@ Though, while looking at the distribution of `minutes`, we're surprised by its h
 | 75th percentile  | 60.0       |
 | 100th percentile | 1051200.0  |
 
-The huge gap between 75th percentile and the maximum level hints the existence of outliers in the `minutes` column. Thus, we carried out further explorations on the `minutes` column. Using `raw_recipes` dataset to find what recipes could take so long to finish and testify if they are outliers, we filtered for recipes that take between 2 to 3 weeks to finish, which include marinated cuisines like `kimchi` and `2 week sweet pickles`, `weekly made bread`, and liquor like `limoncello` and `plum liquor`. Among recipes that take more than 3 weeks and even months and years to finish, a huge proportion are homemade liquor and wine including `coffee flavored liqueur`, homemade kahlua`, `homemade fruit liquers`, `word stew`, etc.
+The huge gap between 75th percentile and the maximum level hints the existence of outliers in the `minutes` column. Thus, we carried out further explorations on the `minutes` column. Using `raw_recipes` dataset to find what recipes could take so long to finish and testify if they are outliers, we filtered for recipes that take between 2 to 3 weeks to finish, which include marinated cuisines like `kimchi` and `2 week sweet pickles`, `weekly made bread`, and liquor like `limoncello` and `plum liquor`. Among recipes that take more than 3 weeks and even months and years to finish, a huge proportion are homemade liquor and wine including `coffee flavored liqueur`, `homemade kahlua`, `homemade fruit liquers`, `word stew`, etc.
 
 Thus, our point is that we do need to account for these seemingly outliers on the higher end of the spectrum because it's likely that people are more inclined to give high rates for recipes that take them extremely lengthy time to finish. Considering the fact that using bins or quantiles can overly simply or generalize the trend, we decided to apply `StandardScalar` to transform the `minutes` column to standardized units so as to better capture individual differences between `minutes` data points.
 
@@ -135,24 +135,24 @@ Now that we have our `submitted_year` and `interacted_year` through OneHotEncode
 
 Our project uses `DecisionTreeClassifier` model for prediction. Its documentation can be found [here](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html).
 
-We chose a decision tree model over a linear regression model mainly because we were unable to produce a significant prediction model by only using linear regression. Of all the different decision tree models, we picked `DecisionTreeClassifier` as our model because it is fairly simple to use, is able to take in preprocessed data we provide, and works well with `GridSearchCV` when looking for optimal hyperparameters (more on `GridSearchCV` below).
+We chose a decision tree model over a linear regression model because we are dealing with multi-class classification in this project. Of all the different decision tree models, we picked `DecisionTreeClassifier` as our model because it is fairly simple to use, is able to take in preprocessed data we provide, and works well with `GridSearchCV` when looking for the best combination of hyperparameters (more on `GridSearchCV` below).
 
 
 In order to prevent overfitting and look for best parameters suitable for our `DecisionTreeClassifier` object, we will be using `GridSearchCV` to perform a k-fold cross validation procedure. For simplicity, we chose a k value of 5.
 
-After choosing from a variety of hyperparameters as inputs, GridSearchCV produced the following as the best parameters:
+After we input a variety of hyperparameters as inputs and fitted training data, GridSearchCV outputted the following as the best combination of hyperparameters:
 
 ```
 {'decision_tree__criterion': 'entropy', 'decision_tree__max_depth': 3,'decision_tree__min_samples_split': 2}
 ```
 
-Now we can adopt the hyperparameters provided by `GridSearchCV` and calclulated the model's mean accuracy score again.
+Then we use best hyperparameters and train the final model on the whole dataset because part of the training data was used as validation data in the process of GridSearchCV. Now we calclulated our final model's accuracy performance again.
 
-The result of our new `DecisionTreeClassifier` produced a mean accuracy on training data of 0.7247, and a mean accuracy on testing data of 0.7209, and comparing this current accuracy on test data versus 0.5889 from the baseline model, we saw a significant increase of accuracy when tested on unseen data. We can visualize our result with a confusion matrix: 
+The result of our final `DecisionTreeClassifier` model produced a mean accuracy on training data of 0.7247, and a mean accuracy on testing data of 0.7209. Comparing the current accuracy on test data with 0.5832 from the baseline model, we saw a significant increase in accuracy when our model was tested on unseen data. We can visualize our result with a confusion matrix below:
 
 <iframe src="assets/confusion_matrix.html" width=600 height=550 frameBorder=0></iframe>
 
-Despite the improvement, we should also be aware of the fact that our model was only producing results of either 0 or 5. This is because the original dataset contained mostly fives （over 72%）, and just guessing 0 or 5 was considered to be the most optimal. A more in-depth analysis is required to resolve this issue.
+Despite the improvement, we should also be aware of the fact that our model was only classifying `rating` of either 0 or 5. This is because in the original dataset, 72.4% of all ratings are 5, 15.9% of all ratings are 4 (so high ratings consist of over 88% of all rating scores) and 6.41% of all ratings are 0. So just guessing 0 or higher rating like 5 was not due to defects of our model but instead due to the serious class imbalance issue of the original dataset. A more in-depth analysis in future studies may be required to resolve this issue.
 
 # Fairness Analysis
 
