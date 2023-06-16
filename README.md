@@ -144,7 +144,9 @@ In order to prevent overfitting and look for best parameters suitable for our `D
 
 After choosing from a variety of hyperparameters as inputs, GridSearchCV produced the following as the best parameters:
 
+```
 {'decision_tree__criterion': 'entropy', 'decision_tree__max_depth': 3,'decision_tree__min_samples_split': 2}
+```
 
 Now we can adopt the hyperparameters provided by `GridSearchCV` and calclulated the model's mean accuracy score again.
 
