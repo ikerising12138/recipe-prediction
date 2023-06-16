@@ -116,12 +116,16 @@ For  `n_steps` and  `n_ingredients`, we used `KBinsDiscretizer` to transform the
 
 
 For `minutes`, we've decided to apply `StandardScalar` to transform them to standardized units. This process enables us to better handle outliers, since for `minutes` column, the percentile distributuion is 
-25th percentile: 20.0
-50th percentile: 35.0
-75th percentile: 60.0
-100th percentile: 1051200.0
-, 
-thus we wanted to account for the outliers on the higher end of the spectrum. 
+
+| Percentile       | Value      |
+| ---------------- | ---------- |
+| 25th percentile  | 20.0       |
+| 50th percentile  | 35.0       |
+| 75th percentile  | 60.0       |
+| 100th percentile | 1051200.0  |
+
+
+thus, we wanted to account for the outliers on the higher end of the spectrum. 
 
 Now that we have our `submitted_year` and `interacted_year` through OneHotEncoder,
 `n_steps` and `n_ingredients` through KBinsDiscretizer, and
