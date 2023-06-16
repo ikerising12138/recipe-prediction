@@ -171,7 +171,8 @@ For our test statistic, we will be using signed difference in accuracy score bet
 
 For our evaluation metric, we will be using accuracy for consistency. 
 
+The result of the performing the permutation test is shown below:
 
-      
+<iframe src="assets/histogram.html" width=600 height=550 frameBorder=0></iframe>
 
 
