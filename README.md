@@ -43,9 +43,7 @@ Below are the brief description of the raw data that we are going to perform cle
 | 'review'     | user's review message about the recipe           |
 
 ### Data Cleaning Process
-We've first dropped rows with missing `rating` values. Since we are trying to classify `rating` based on other columns, information in rows with missing `rating` would be of little value for us in the classification process.
-
-We've also splitted the `nutrition` column into 7 separate columns as each value in the `nutrition` column represents a nutrient in the recipe: `calories (#)`, `total fat (PDV)`, `sugar (PDV)`, `sodium (PDV)`, `protein (PDV)`, `saturated fat (PDV)`, and `carbohydrates (PDV)`.
+We've splitted the `nutrition` column into 7 separate columns as each value in the `nutrition` column represents a nutrient in the recipe: `calories (#)`, `total fat (PDV)`, `sugar (PDV)`, `sodium (PDV)`, `protein (PDV)`, `saturated fat (PDV)`, and `carbohydrates (PDV)`.
 
 Then, we wanted to extract the year information from the `submitted` column in `raw_recipes` dataset and the year information from the `date` column in `raw_interactions` dataset. We transformed the `submitted` column to `submitted_year` which represents the year when a recipe was posted, and the `date` column to `interacted_date` which represents the year when a rating for a recipe was posted.
 We finally ended up selecting the following 13 columns that will be needed in this project.
@@ -156,11 +154,11 @@ Despite the improvement, we should also be aware of the fact that our model was 
 
 # Fairness Analysis
 
-In this section, we would like to perform a permutation test for fairness analysis by binarizing our input data into two groups: 
+In this section, we would like to perform a permutation test for fairness analysis by binarizing our `n_steps` column into two groups: 
 
-Group X: recipes with steps smaller than 15
+Group X: recipes with number of steps smaller than or equal to 15
 
-Group Y: recipes with larger number of steps larger than 15
+Group Y: recipes with number of steps larger than 15
 
 Now, we will state our hypothesis: 
 
@@ -168,19 +166,15 @@ Null hypothesis: Our model is fair. Its accuracy for recipes with steps smaller 
 
 Alternative Hypothesis: Our model is unfair. Its accuracy for steps smaller than 15 is higher than that for recipes with larger number of steps.
 
-For our test statistic, we will be using signed difference in accuracy score between recipe with n_steps smaller than 15 and recipes with larger n_steps. 
+For our test statistic, we will be using signed difference in accuracy score between recipe with `n_steps` smaller than 15 and recipes with larger n_steps. And we chose a significance level of 5%.
 
-For our evaluation metric, we will be using accuracy for consistency. 
+For our evaluation metric, we will still be using accuracy for consistency.
 
 The result of the performing the permutation test is shown below:
 
 <iframe src="assets/Histogram.html" width=600 height=550 frameBorder=0></iframe>
 
-From the permutation test, we derived observed difference in mean, which is roughly 0.002983.
+From the permutation test, we derived observed difference in mean to be roughly 0.002983.
 
-The resulting p-value is 0.23, which means that we failed to reject our null hypothesis, so we are unable to determine that there is a significant difference between the results of the model when applied to the two binarized samples, so we can argue that our model is likely to be fair.
-
-
-
-
+The resulting p-value is 0.23, which means that we failed to reject our null hypothesis under 5% significance level. Though we cannot make an absolute statement, there's a chance that our final model is fair as we are unable to determine that there is a significant difference between the accuracy score performance of the two binarized groups.
 
