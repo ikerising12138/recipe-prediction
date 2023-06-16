@@ -3,19 +3,19 @@ Authors: Xiaoyan Zhang (xiz115@ucsd.edu), Kay Qu(kqu@ucsd.edu)
 
 # About this project
 This is a paired data exploration project which is originally assigned by UCSD's DSC80 offering during SP23. 
-we will be focusing on cleaning, exploreing, and building a scikit pipeline to tranform and predict data originally scraped from [food.com](food.com). 
+We will be focusing on cleaning, exploring, and building a scikit pipeline to tranform and predict data originally scraped from [food.com](food.com). 
 More information about the project's guidelines can be found [here](https://dsc80.com/project5/#overview).
 
 
 # Framing the Problem
 
-Our previous investigation question was on the relationship between Time (in minutues) to prepare a recipe and whether it correlates with the average rating that the recipe receives. We hypothesize that the longer time a recipe requires, the less rating it will receive. However, we could not establish a clear correlation between them. Therefore we would now like to build a **multiclass classification model** to predict recipes' ratings. 
+Our previous investigation question was on the relationship between 'minutes' to prepare a recipe and the average 'rating' that the recipe receives. We hypothesized that the longer time a recipe requires, the lower rating it will receive. However, we could not establish a clear correlation between them. Therefore, in this project, we aim to build a **multiclass classification model** to predict recipes' ratings. 
 
 
 ## About our data
 Our data is derived from [food.com](https://www.food.com), originally scraped and used by them. The raw csv files can be found [here](https://drive.google.com/file/d/1kIbMz6jlhleiZ9_3QthmUnifoSds_2EI/view).
 
-Below are the breif description of the raw data that we are going to perform cleaning on: 
+Below are the brief description of the raw data that we are going to perform cleaning on: 
 
 ### raw_recipes (83782 rows, 12 columns)
 
@@ -45,6 +45,24 @@ Below are the breif description of the raw data that we are going to perform cle
 We transformed `submitted` column to `submitted_year`, `date` column to `interacted_date`, as per the data source. Then, we exapnded the nutrition column by assigning each nutrition to its separate columns:
 
 ### transformed dataframe
+
+<div markdown="1" style="
+    display: block;
+    /* background-color: blue; */
+    width: 100%;
+    overflow-x: auto
+">
+    
+   | submitted_year | interacted_year | minutes | n_steps | n_ingredients | calories (#) | total fat (PDV) | sugar (PDV) | sodium (PDV) | protein (PDV) | saturated fat (PDV) | carbohydrates (PDV) | rating |
+| -------------- | --------------- | ------- | ------- | ------------- | ------------ | --------------- | ----------- | ------------- | -------------- | ------------------- | -------------------- | ------ |
+| 2008           | 2008            | 40      | 10      | 9             | 138.4        | 10.0            | 50.0        | 3.0           | 3.0            | 19.0                | 6.0                  | 4.0    |
+| 2011           | 2012            | 45      | 12      | 11            | 595.1        | 46.0            | 211.0       | 22.0          | 13.0           | 51.0                | 26.0                 | 5.0    |
+| 2008           | 2008            | 40      | 6       | 9             | 194.8        | 20.0            | 6.0         | 32.0          | 22.0           | 36.0                | 3.0                  | 5.0    |
+| 2008           | 2009            | 40      | 6       | 9             | 194.8        | 20.0            | 6.0         | 32.0          | 22.0           | 36.0                | 3.0                  | 5.0    |
+| 2008           | 2013            | 40      | 6       | 9             | 194.8        | 20.0            | 6.0         | 32.0          | 22.0           | 36.0                | 3.0                  | 5.0    |
+
+</div>
+
 
 <div class="table-container">
     | submitted_year | interacted_year | minutes | n_steps | n_ingredients | calories (#) | total fat (PDV) | sugar (PDV) | sodium (PDV) | protein (PDV) | saturated fat (PDV) | carbohydrates (PDV) | rating |
