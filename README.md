@@ -151,10 +151,27 @@ The result of our new `DecisionTreeClassifier` produced a mean accuracy on train
 
 <iframe src="assets/confusion_matrix.html" width=600 height=550 frameBorder=0></iframe>
 
-Despite the improvement, we should also be aware of the fact that our model was only producing results of either 0 or 5. This is because the original dataset contained mostly fives, and just guessing 0 or 5 was considered to be the most optimal. A more in-depth analysis is required to resolve this issue.
+Despite the improvement, we should also be aware of the fact that our model was only producing results of either 0 or 5. This is because the original dataset contained mostly fives （over 72%）, and just guessing 0 or 5 was considered to be the most optimal. A more in-depth analysis is required to resolve this issue.
 
 ## Fairness Analysis
-           
+
+In this section, we would like to perform a fairness analysis by binarizing our input data into two groups: 
+
+Group X: recipes with steps smaller than 15
+
+Group Y: recipes with larger number of steps larger than 15
+
+Now, we will state our hypothesis: 
+
+Null hypothesis: Our model is fair. Its accuracy for recipes with steps smaller than 15 and recipes with larger number of steps are roughly the same, and any differences are due to random chance.
+
+Alternative Hypothesis: Our model is unfair. Its accuracy for steps smaller than 15 is higher than that for recipes with larger number of steps.
+
+For our test statistic, we will be using signed difference in accuracy score between recipe with n_steps smaller than 15 and recipes with larger n_steps. 
+
+For our evaluation metric, we will be using accuracy for consistency. 
+
+
       
 
 
