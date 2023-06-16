@@ -47,6 +47,13 @@ We transformed `submitted` column to `submitted_year`, `date` column to `interac
 
 ### transformed dataframe
 
+<div markdown="1" style="
+    display: block; 
+    /* background-color: blue;  */
+    width: 100%; 
+    overflow-x:auto
+">
+
 | submitted_year | interacted_year | minutes | n_steps | n_ingredients | calories (#) | total fat (PDV) | sugar (PDV) | sodium (PDV) | protein (PDV) | saturated fat (PDV) | carbohydrates (PDV) | rating |
 | -------------- | --------------- | ------- | ------- | ------------- | ------------ | --------------- | ----------- | ------------- | -------------- | ------------------- | -------------------- | ------ |
 | 2008           | 2008            | 40      | 10      | 9             | 138.4        | 10.0            | 50.0        | 3.0           | 3.0            | 19.0                | 6.0                  | 4.0    |
@@ -80,9 +87,4 @@ The result of our `DecisionTreeClassifier` showed a mean accuracy on training da
 For the final model, we've decided to engineer more features to our model. Namely, `n_steps`, `n_ingredients`, and `minutes`.
 
 <iframe src="assets/Scatter_Plot_N_Steps.html" width=600 height=550 frameBorder=0></iframe>
-<div markdown="1" style="
-    display: block; 
-    /* background-color: blue;  */
-    width: 100%; 
-    overflow-x:auto
-">
+
