@@ -83,3 +83,8 @@ For the final model, we've decided to engineer more features to our model. Namel
 
 <iframe src="assets/Scatter_Plot_N_Steps.html" width=600 height=550 frameBorder=0></iframe>
 
+<iframe src="assets/Scatter_Plot_N_Ingre.html" width=600 height=550 frameBorder=0></iframe>
+
+<iframe src="assets/Scatter_Plot_Minutes.html" width=600 height=550 frameBorder=0></iframe>
+
+
