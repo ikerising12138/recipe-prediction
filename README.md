@@ -144,7 +144,7 @@ After we input a variety of hyperparameters as inputs and fitted training data, 
 {'decision_tree__criterion': 'entropy', 'decision_tree__max_depth': 3,'decision_tree__min_samples_split': 2}
 ```
 
-Then we use best hyperparameters and train the final model on the whole dataset because part of the training data was used as validation data in the process of GridSearchCV. Now we calclulated our final model's accuracy performance again.
+Then we used the best hyperparameters and trained the final model on the whole dataset because part of the training data was used as validation data in the process of GridSearchCV. Now we calclulated our final model's accuracy performance again.
 
 The result of our final `DecisionTreeClassifier` model produced a mean accuracy on training data of 0.7247, and a mean accuracy on testing data of 0.7209. Comparing the current accuracy on test data with 0.5832 from the baseline model, we saw a significant increase in accuracy when our model was tested on unseen data. We can visualize our result with a confusion matrix below:
 
