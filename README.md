@@ -175,4 +175,11 @@ The result of the performing the permutation test is shown below:
 
 <iframe src="assets/Histogram.html" width=600 height=550 frameBorder=0></iframe>
 
+From the permutation test, we derived observed difference in mean, which is roughly 0.002983.
+
+The resulting p-value is 0.23, which means that we failed to reject our null hypothesis, so we are unable to determine that there is a significant difference between the results of the model when applied to the two binarized samples, so we can argue that our model is likely to be fair.
+
+
+
+
 
