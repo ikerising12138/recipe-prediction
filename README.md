@@ -7,12 +7,12 @@ we will be focusing on cleaning, exploreing, and building a scikit pipeline to t
 More information about the project's guidelines can be found [here](https://dsc80.com/project5/#overview).
 
 
-## Framing the Problem
+# Framing the Problem
 
 Our previous investigation question was on the relationship between Time (in minutues) to prepare a recipe and whether it correlates with the average rating that the recipe receives. We hypothesize that the longer time a recipe requires, the less rating it will receive. However, we could not establish a clear correlation between them. Therefore we would now like to build a **multiclass classification model** to predict recipes' ratings. 
 
 
-### About our data
+## About our data
 Our data is derived from [food.com](https://www.food.com), originally scraped and used by them. The raw csv files can be found [here](https://drive.google.com/file/d/1kIbMz6jlhleiZ9_3QthmUnifoSds_2EI/view).
 
 Below are the breif description of the raw data that we are going to perform cleaning on: 
@@ -75,7 +75,7 @@ The metric we will be using to assess our model is **accuracy**, since mean accc
 At time of prediction, we are able to use all of our data aside from the `rating` column from our transformed dataframe to perform analysis, since `rating` is our response variable.
 
 
-## Baseline Model
+# Baseline Model
 
 Before we train our model, we need to first define a training set and a testing set. We used 
 
@@ -88,7 +88,7 @@ This process is achieved via `Pipeline` module, in which it allows us to first a
 The result of our `DecisionTreeClassifier` showed a mean accuracy on training data of 0.9039, and a mean accuracy on testing data of 0.5889. This is not an ideal result, since a high training-accuracy and a low testing-accuracy indicate that our model is overfitting the training data. We need to make necessary adjustments to account for overfitting. 
 
 
-## Final Model
+# Final Model
 
 ### Selecting More Features
 
@@ -153,7 +153,7 @@ The result of our new `DecisionTreeClassifier` produced a mean accuracy on train
 
 Despite the improvement, we should also be aware of the fact that our model was only producing results of either 0 or 5. This is because the original dataset contained mostly fives （over 72%）, and just guessing 0 or 5 was considered to be the most optimal. A more in-depth analysis is required to resolve this issue.
 
-## Fairness Analysis
+# Fairness Analysis
 
 In this section, we would like to perform a fairness analysis by binarizing our input data into two groups: 
 
