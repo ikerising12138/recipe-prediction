@@ -109,9 +109,11 @@ We believe these features helped our model to make better predictions partially 
 
 ### Engineering features
 
-Now that we've decided on what features to use, we wanted to process these data so that they help with better prediction results.
+Now that we've decided on what features to use, we wanted to process these data so that they help with better prediction results. 
 
-For  `n_steps` and  `n_ingredients`, we used `KBinsDiscretizer` to transform the numerical values into discrete bins. 
+
+For  `n_steps` and  `n_ingredients`, we used `KBinsDiscretizer` to transform their numerical values into discrete bins. This process allows us to better handle non-linear relationships (in case these features are not linearly related to rating), and to reduce overfitting as the complexity of the original data is simplified. 
+
 
 For `minutes`, we've decided to apply `StandardScalar` to transform them to standardized units. This process enables us to better handle outliers, since for `minutes` column, the percentile distributuion is 
 25th percentile: 20.0
