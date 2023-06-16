@@ -95,11 +95,11 @@ For the final model, we've decided to engineer more features to add upon our bas
 
 We have visualized their distributionn with regard to `rating`:
 
-<iframe src="assets/Scatter_Plot_N_Steps.html" width=600 height=550 frameBorder=0></iframe>
+<iframe src="assets/Scatter_Plot_N_Steps.html" width=500 height=450 frameBorder=0></iframe>
 
-<iframe src="assets/Scatter_Plot_N_Ingre.html" width=600 height=550 frameBorder=0></iframe>
+<iframe src="assets/Scatter_Plot_N_Ingre.html" width=500 height=450 frameBorder=0></iframe>
 
-<iframe src="assets/Scatter_Plot_Minutes.html" width=600 height=550 frameBorder=0></iframe>
+<iframe src="assets/Scatter_Plot_Minutes.html" width=500 height=450 frameBorder=0></iframe>
 
 From the plots above, we can see that there seems to be some association between `n_steps`, `n_ingredients`, `minutes` and `rating`, some with visually bimodal trends.
 
@@ -172,7 +172,7 @@ For our evaluation metric, we will still be using accuracy for consistency.
 
 The result of the performing the permutation test is shown below:
 
-<iframe src="assets/Histogram.html" width=600 height=550 frameBorder=0></iframe>
+<iframe src="assets/Histogram.html" width=500 height=450 frameBorder=0></iframe>
 
 From the permutation test, we derived observed difference in mean to be roughly 0.002983.
 
