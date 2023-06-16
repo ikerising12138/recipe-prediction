@@ -123,10 +123,15 @@ For `minutes`, we've decided to apply `StandardScalar` to transform them to stan
 , 
 thus we wanted to account for the outliers on the higher end of the spectrum. 
 
+Now that we have our `submitted_year` and `interacted_year` through OneHotEncoder,
+`n_steps` and `n_ingredients` through KBinsDiscretizer, and
+`minutes` thorugh StandardScalar, 
+we can first apply these preprocessing stpes to our data, so we can then move on to our next step: finding optimal hyperparameters.
+
 
 ### Choosing Appropriate Hyperparameters
 
-
+In order to prevent overfitting and look for best parameters suitable for our `DecisionTreeClassifier` object, we will use `GridSearchCV` to perform a k-cross-fold validation procedure. 
 
 
 
