@@ -137,12 +137,19 @@ we can first apply these preprocessing stpes to our data, so we can then move on
 
 Our group used `DecisionTreeClassifier` model for prediction. Its documentation can be found [here](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html).
 
+We chose a decision tree model over a linear regression model mainly because we were unable to produce a significant prediction model by only using linear regression. Of all the different decision tree models, we picked `DecisionTreeClassifier` as our model because it is fairly simple to use, is able to take in preprocessed data we provide, and works well with `GridSearchCV` when looking for optimal hyperparameters (more on `GridSearchCV` below).
 
-In order to prevent overfitting and look for best parameters suitable for our `DecisionTreeClassifier` object, we will use `GridSearchCV` to perform a k-cross-fold validation procedure. For simplicity, we chose a k value of 5.
+
+In order to prevent overfitting and look for best parameters suitable for our `DecisionTreeClassifier` object, we will be using `GridSearchCV` to perform a k-cross-fold validation procedure. For simplicity, we chose a k value of 5.
 
 After choosing from a variety of hyperparameters as inputs, GridSearchCV produced the following as the best parameters:
 
 {'decision_tree__criterion': 'entropy', 'decision_tree__max_depth': 3,'decision_tree__min_samples_split': 2}
+
+Now we can adopt the hyperparameters provided by `GridSearchCV` and calclulated the model's mean accuracy score again.
+
+The result of our new `DecisionTreeClassifier` produced a mean accuracy on training data of 0.7247, and a mean accuracy on testing data of 0.7209, and comparing this current accuracy on test data versus 0.5889 from the baseline model, we saw a significant increase of accuracy when tested on unseen data. We can visualize our result with a confusion matrix: 
+
 
 
 
