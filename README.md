@@ -115,7 +115,7 @@ Now that we've decided on what features to use, we wanted to process these data 
 For  `n_steps` and  `n_ingredients`, we used `KBinsDiscretizer` to transform their numerical values into discrete bins. This process allows us to better handle non-linear relationships (in case these features are not linearly related to rating), and to reduce overfitting as the complexity of the original data is simplified. 
 
 
-For `minutes`, we've decided to apply `StandardScalar` to transform them to standardized units. This process enables us to better handle outliers, since for `minutes` column, the percentile distributuion is 
+For `minutes`, we've decided to apply `StandardScalar` to transform them to standardized units. This process enables us to better handle outliers, since for `minutes` column, the percentile distributuion is:
 
 | Percentile       | Value      |
 | ---------------- | ---------- |
@@ -133,9 +133,21 @@ Now that we have our `submitted_year` and `interacted_year` through OneHotEncode
 we can first apply these preprocessing stpes to our data, so we can then move on to our next step: finding optimal hyperparameters.
 
 
-### Choosing Appropriate Hyperparameters
+### Choosing Appropriate Model and Hyperparameters
 
-In order to prevent overfitting and look for best parameters suitable for our `DecisionTreeClassifier` object, we will use `GridSearchCV` to perform a k-cross-fold validation procedure. 
+Our group used `DecisionTreeClassifier` model for prediction. Its documentation can be found [here](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html).
 
+
+In order to prevent overfitting and look for best parameters suitable for our `DecisionTreeClassifier` object, we will use `GridSearchCV` to perform a k-cross-fold validation procedure. For simplicity, we chose a k value of 5.
+
+After choosing from a variety of hyperparameters as inputs, GridSearchCV produced the following as the best parameters:
+
+{'decision_tree__criterion': 'entropy', 'decision_tree__max_depth': 3,'decision_tree__min_samples_split': 2}
+
+
+
+
+           
+      
 
 
