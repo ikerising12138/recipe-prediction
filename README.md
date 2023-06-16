@@ -113,7 +113,7 @@ For `n_steps` and `n_ingredients`, the former ranges from 0 to about 100 steps, 
 
 Though, while looking at the distribution of `minutes`, we're surprised by its huge range of data as its percentile distribution is as follows:
 
-| Percentile       | `Minutes`  |
+| Percentile       | Minutes    |
 | ---------------- | ---------- |
 | 25th percentile  | 20.0       |
 | 50th percentile  | 35.0       |
