@@ -32,7 +32,7 @@ Below are the brief description of the raw data that we are going to perform cle
 | 'steps'          | Description for 'n_steps', in order                       |
 | 'description'    | additional description provided by user                             |
 
-### raw_ratings (731927 rows, 5 columns)
+### raw_interactions (731927 rows, 5 columns)
 
 | Column       | Description           |
 |--------------|-----------------------|
@@ -42,9 +42,13 @@ Below are the brief description of the raw data that we are going to perform cle
 | 'rating'     | rating, scaling from 1-5          |
 | 'review'     | user's review message about the recipe           |
 
-We transformed `submitted` column to `submitted_year`, `date` column to `interacted_date`, as per the data source. Then, we exapnded the nutrition column by assigning each nutrition to its separate columns:
+### Data Cleaning Process
+We've first dropped rows with missing `rating` values. Since we are trying to classify `rating` based on other columns, information in rows with missing `rating` would be of little value for us in the classification process.
+We've also splitted the `nutrition` column into 7 separate columns as each value in the `nutrition` column represents a nutrient in the recipe: `calories (#)`, `total fat (PDV)`, `sugar (PDV)`, `sodium (PDV)`, `protein (PDV)`, `saturated fat (PDV)`, and `carbohydrates (PDV)`.
+Then, we wanted to extract the year information from the `submitted` column in `raw_recipes` dataset and the year information from the `date` column in `raw_interactions` dataset. We transformed the `submitted` column to `submitted_year` which represents the year when a recipe was posted, and the `date` column to `interacted_date` which represents the year when a rating for a recipe was posted.
+We finally ended up selecting the following 13 columns that will be needed in this project.
 
-### transformed dataframe
+### Cleaned dataframe (234428 rows, 13 columns)
 
 <div markdown="1" style="
     display: block;
@@ -53,7 +57,7 @@ We transformed `submitted` column to `submitted_year`, `date` column to `interac
     overflow-x: auto
 ">
     
-   | submitted_year | interacted_year | minutes | n_steps | n_ingredients | calories (#) | total fat (PDV) | sugar (PDV) | sodium (PDV) | protein (PDV) | saturated fat (PDV) | carbohydrates (PDV) | rating |
+| submitted_year | interacted_year | minutes | n_steps | n_ingredients | calories (#) | total fat (PDV) | sugar (PDV) | sodium (PDV) | protein (PDV) | saturated fat (PDV) | carbohydrates (PDV) | rating |
 | -------------- | --------------- | ------- | ------- | ------------- | ------------ | --------------- | ----------- | ------------- | -------------- | ------------------- | -------------------- | ------ |
 | 2008           | 2008            | 40      | 10      | 9             | 138.4        | 10.0            | 50.0        | 3.0           | 3.0            | 19.0                | 6.0                  | 4.0    |
 | 2011           | 2012            | 45      | 12      | 11            | 595.1        | 46.0            | 211.0       | 22.0          | 13.0           | 51.0                | 26.0                 | 5.0    |
